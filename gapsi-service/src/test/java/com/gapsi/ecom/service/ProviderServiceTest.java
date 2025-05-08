@@ -34,7 +34,7 @@ public class ProviderServiceTest {
 
         Provider newProvider = providerService.createNewProvider(buildDto());
         Assertions.assertNotNull(newProvider);
-        Assertions.assertNotNull(newProvider.getProviderId());
+        Assertions.assertNotNull(newProvider.getId());
     }
 
     @Test
