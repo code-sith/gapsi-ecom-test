@@ -1,0 +1,6 @@
+2025-05-06 16:40:34.129601-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PROVIDERS" not found (this database is empty); SQL statement:
+select pe1_0.id,pe1_0.address,pe1_0.company_name,pe1_0.created_date,pe1_0.created_by,pe1_0.name,pe1_0.updated_date,pe1_0.updated_by from providers pe1_0 offset ? rows fetch first ? rows only [42104-232]
+2025-05-06 16:40:53.362468-06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PROVIDERS" not found (this database is empty); SQL statement:
+select pe1_0.id,pe1_0.address,pe1_0.company_name,pe1_0.created_date,pe1_0.created_by,pe1_0.name,pe1_0.updated_date,pe1_0.updated_by from providers pe1_0 offset ? rows fetch first ? rows only [42104-232]
