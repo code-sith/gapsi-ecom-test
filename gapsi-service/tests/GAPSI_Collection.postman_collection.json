@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "7fad8a02-7e92-4990-bce0-6684f838223f",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29548810"
+	},
+	"item": [
+		{
+			"name": "GAPSI",
+			"item": [
+				{
+					"name": "Providers",
+					"item": [
+						{
+							"name": "Fetch all providers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_url}}/v1/providers?page=1&size=10",
+									"host": [
+										"{{host_url}}"
+									],
+									"path": [
+										"v1",
+										"providers"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create provider",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Success', function(){",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"proveedor 87\",\n    \"address\": \"camino nuevo 112\",\n    \"companyName\": \"org sa de cv\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}/v1/providers",
+									"host": [
+										"{{host_url}}"
+									],
+									"path": [
+										"v1",
+										"providers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create duplicated provider",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Success', function(){",
+											"     pm.response.to.have.status(409);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"proveedor 1\",\n    \"address\": \"camino nuevo 112\",\n    \"companyName\": \"org sa de cv\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}/v1/providers",
+									"host": [
+										"{{host_url}}"
+									],
+									"path": [
+										"v1",
+										"providers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete providers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Success', function(){",
+											"     pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"providers\":[\n        { \"providerId\": 1},\n        { \"providerId\": 2}\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}/v1/providers/delete",
+									"host": [
+										"{{host_url}}"
+									],
+									"path": [
+										"v1",
+										"providers",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get user by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_url}}/v1/users/1",
+									"host": [
+										"{{host_url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Health check",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Build version",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
